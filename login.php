@@ -18,16 +18,17 @@
               $_SESSION['username'] = $cariuser['username'];
               $_SESSION['log'] = "login";
 
-              if($cariuser){ 
-                  echo '<script>alert("Data yang anda masukan benar");window.location="index.php"</script>';
-              }else{
-                  echo '<script>alert("Data yang anda masukan salah");history.go(-1);</script>';
-              }
-              echo '<script>alert("Anda Berhasil Login");window.location="index.php"</script>';
-          } else {
-              echo '<script>alert("Username atau password salah");history.go(-1);</script>';
-          }	
-      };
+              if($cariuser["level"] == 1){
+                header("Location: su/index.php");
+              } else if($cariuser["level"] == 2){
+                header("Location: apotek/admin/index.php");
+              } else if($cariuser["level"] == 3){
+                header("Location: apotek/kasir/index.php");
+              } 
+              exit;
+      }
+      echo '<script>alert("Data yang anda masukan salah");history.go(-1);</script>';
+  }
 ?>
 <!DOCTYPE html>
 <html>

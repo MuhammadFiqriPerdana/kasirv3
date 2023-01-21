@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2023 at 04:14 PM
+-- Generation Time: Jan 21, 2023 at 03:33 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -59,11 +59,7 @@ CREATE TABLE `inv` (
 --
 
 INSERT INTO `inv` (`invid`, `invoice`, `tgl_inv`, `pembayaran`, `kembalian`, `status`) VALUES
-(47, 'AD15123224325', '2023-01-15 15:44:04', 50000, 40000, 'selesai'),
-(48, 'AD1612380325', '2023-01-16 01:03:11', 0, 0, 'proses'),
-(49, 'AD1612380304', '2023-01-16 01:03:56', 800000, 0, 'selesai'),
-(50, 'AD1612380704', '2023-01-16 01:07:25', 50000, 10000, 'selesai'),
-(51, 'AD16123122608', '2023-01-16 07:07:52', 2000000, 70000, 'selesai');
+(48, 'AD1612380325', '2023-01-16 01:03:11', 0, 0, 'proses');
 
 -- --------------------------------------------------------
 
@@ -82,18 +78,6 @@ CREATE TABLE `laporan` (
   `subtotal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `laporan`
---
-
-INSERT INTO `laporan` (`idlaporan`, `invoice`, `kode_produk`, `nama_produk`, `harga`, `harga_modal`, `qty`, `subtotal`) VALUES
-(47, 'AD15123224325', '2112', 'asddakl', 5000, 2500, 2, 10000),
-(48, 'AD1612380304', '213421341', 'Bodrex', 5000, 2000, 10, 50000),
-(49, 'AD1612380304', '123', 'Paracetamol', 30000, 24500, 25, 750000),
-(51, 'AD1612380704', '213421341', 'Bodrex', 5000, 2000, 8, 40000),
-(52, 'AD16123122608', '123', 'Paracetamol', 30000, 24500, 62, 1860000),
-(53, 'AD16123122608', '213421341', 'Bodrex', 5000, 2000, 14, 70000);
-
 -- --------------------------------------------------------
 
 --
@@ -107,15 +91,19 @@ CREATE TABLE `login` (
   `toko` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
   `telepon` varchar(15) NOT NULL,
-  `logo` varchar(255) NOT NULL
+  `logo` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`userid`, `username`, `password`, `toko`, `alamat`, `telepon`, `logo`) VALUES
-(1, 'admin', '$2y$10$TNORnWPaOzUoq/XFIYCPWuzN0Vj2FGDssQ13K6F2ihLhzXQocytDG', 'hjkhjk', ' Jl. Mistar Cokrokusumo Komp PU RT 015/Rw 003 Kel. Sungai Besar', '082159189645', 'user.png');
+INSERT INTO `login` (`userid`, `username`, `password`, `toko`, `alamat`, `telepon`, `logo`, `level`, `role`) VALUES
+(1, 'kasir', '$2y$10$WaF091Ie8vpEudi5alKe3e/vjl90dlIaBw/fZphnbxIkUASszG4nu', 'Apotek Hamada Farma', ' Jl. Mistar Cokrokusumo Komp PU RT 015/Rw 003 Kel. Sungai Besar', '082159189645', 'user.png', '3', 'Kasir'),
+(5, 'admin_toko', '$2y$10$WaF091Ie8vpEudi5alKe3e/vjl90dlIaBw/fZphnbxIkUASszG4nu', 'Apotek Hamada Farma', ' Jl. Mistar Cokrokusumo Komp PU RT 015/Rw 003 Kel. Sungai Besar', '082159189645', 'user.png', '2', 'Admin Toko'),
+(6, 'su', '$2y$10$WaF091Ie8vpEudi5alKe3e/vjl90dlIaBw/fZphnbxIkUASszG4nu', 'Super User', '', '', 'user.png', '1', 'Super User');
 
 -- --------------------------------------------------------
 
@@ -133,14 +121,6 @@ CREATE TABLE `produk` (
   `tgl_kadaluarsa` date NOT NULL,
   `id_suplier` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `produk`
---
-
-INSERT INTO `produk` (`idproduk`, `kode_produk`, `nama_produk`, `harga_modal`, `harga_jual`, `tgl_input`, `tgl_kadaluarsa`, `id_suplier`) VALUES
-(10, '213421341', 'Bodrex', 2000, 5000, '2023-09-01', '2023-11-10', '0000-00-00'),
-(12, '123', 'Paracetamol', 24500, 30000, '2023-01-16', '2024-05-09', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -208,25 +188,25 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `inv`
 --
 ALTER TABLE `inv`
-  MODIFY `invid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `invid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `idlaporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `idlaporan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `idproduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idproduk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `suplier`
