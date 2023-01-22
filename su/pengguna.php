@@ -47,36 +47,27 @@
     <div class="modal-content border-0">
         <form method="post">
       <div class="modal-header bg-purple">
-        <h5 class="modal-title text-white">Edit Produk</h5>
+        <h5 class="modal-title text-white">Edit Pengguna</h5>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label class="samll">Kode Produk :</label>
-            <input type="hidden" name="idproduk" value="<?php echo $d['idproduk']; ?>">
-            <input type="text" name="Edit_Kode_Produk" value="<?php echo $d['kode_produk']; ?>" class="form-control" required>
+            <label class="samll">Username :</label>
+            <input type="text" name="Edit_Username" value="<?php echo $d['usernmae']; ?>" class="form-control" required>
         </div>
         <div class="form-group">
-            <label class="samll">Nama Produk :</label>
-            <input type="text" name="Edit_Nama_Produk" value="<?php echo $d['nama_produk']; ?>" class="form-control" required>
+            <label class="samll">Password :</label>
+            <input type="text" placeholder="0" name="Edit_Password" value="<?php echo $d['password']; ?>" class="form-control" required>
         </div>
         <div class="form-group">
-            <label class="samll">Harga Modal :</label>
-            <input type="number" placeholder="0" name="Edit_Harga_Modal" value="<?php echo $d['harga_modal']; ?>" class="form-control" required>
+            <label class="samll">Toko :</label>
+            <input type="text" placeholder="0" name="Edit_Toko" value="<?php echo $d['toko']; ?>" class="form-control" required>
         </div>
         <div class="form-group">
-            <label class="samll">Harga Jual :</label>
-            <input type="number" placeholder="0" name="Edit_Harga_Jual" value="<?php echo $d['harga_jual']; ?>" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label class="samll">Tanggal Input :</label>
-            <input type="date" placeholder="0" name="Edit_Tanggal_Input" value="<?php echo $d['tgl_input']; ?>" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label class="samll">Tanggal Kadaluarsa :</label>
-            <input type="date" placeholder="0" name="Edit_Tanggal_Kadaluarsa" value="<?php echo $d['tgl_kadaluarsa']; ?>" class="form-control" required>
+            <label class="samll">Alamat :</label>
+            <input type="text" placeholder="0" name="Edit_Alamat" value="<?php echo $d['alamat']; ?>" class="form-control" required>
         </div>
       </div>
       <div class="modal-footer">
