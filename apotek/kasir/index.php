@@ -234,14 +234,27 @@ if(isset($_POST['import']))
 {
     $Ipembayaran = htmlspecialchars($_POST['pembayaran']);
     $Ikembalian = htmlspecialchars($_POST['kembalian']);
+    $selSto = mysqli_query($conn, "SELECT * FROM produk WHERE kodeproduk ='". $Input1 . "'");
+    $sto = mysqli_fetch_array($selSto);
+    $stok = $sto['stok'];
+    $sisa = $stok - $jmlh;
+    
+    
     if($Ikembalian >= 0){
       $UpdCart = mysqli_query($conn,"UPDATE inv SET
       pembayaran='$Ipembayaran',kembalian='$Ikembalian',status='selesai' WHERE invoice='$noinv'") 
      or die (mysqli_connect_error()); 
-
+    if($stok < $jmlh) {
+      ?>
+      <script>
+      alert('Oops! Jumlah Barang Yang Dipinjam Melebih Stok Yang Tersedia');
+      document.location='pj-alat-tambah.php';
+  </script>
+  <?php }else {
      $UpdLap = mysqli_query($conn, "INSERT INTO laporan (invoice,kode_produk,nama_produk,harga,harga_modal,qty,subtotal)
      SELECT invoice,kode_produk,nama_produk,harga,harga_modal,qty,subtotal FROM cart") or die (mysqli_connect_error());
-
+     $upstok = mysqli_query($conn, "UPDATE produk SET stok='$sisa' WHERE idproduk='$Input1'");
+  }
     $DelCart = mysqli_query($conn,"DELETE FROM cart") or die (mysqli_connect_error());
     
     if($UpdCart&&$UpdLap&&$DelCart){

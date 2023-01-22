@@ -67,6 +67,36 @@ $logo = $DataLogin['logo'];
             <span>General</span>
           </li>
           <li>
+            <a href="index.php">
+              <i class="fas fa-tv"></i>
+              <span>Transaksi</span>
+            </a>
+          </li>
+          <li>
+            <a href="produk.php">
+            <i class="fas fa-archive"></i>
+              <span>Produk</span>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="produk.php">
+            <i class="fas fa-truck"></i>
+              <span>Suplier</span>
+            </a>
+          </li> -->
+          <li>
+            <a href="laporan.php">
+              <i class="fa fa-chart-line"></i>
+              <span>Laporan</span>
+            </a>
+          </li>
+          <li>
+            <a href="pengaturan.php">
+              <i class="fa fa-cog"></i>
+              <span>Pengaturan</span>
+            </a>
+          </li>
+          <li>
             <a href="#Exit" data-toggle="modal">
               <i class="fa fa-power-off"></i>
               <span>Keluar</span>
