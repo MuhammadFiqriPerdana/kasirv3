@@ -85,12 +85,6 @@ $logo = $DataLogin['logo'];
             </a>
           </li> -->
           <li>
-            <a href="laporan.php">
-              <i class="fa fa-chart-line"></i>
-              <span>Laporan</span>
-            </a>
-          </li>
-          <li>
             <a href="pengaturan.php">
               <i class="fa fa-cog"></i>
               <span>Pengaturan</span>
